@@ -1,0 +1,29 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Tech Adventure",
+  "home_page_url": "https://starry-wang.github.io/",
+  "feed_url": "https://starry-wang.github.io/feed.json",
+  "description": "Mr.Starry's Blog for studying",
+  "icon": "https://starry-wang.github.io/logo.png",
+  "favicon": "https://starry-wang.github.io/favicon.ico",
+  "items": [
+    {
+      "title": "TimeZone in java & MySQL",
+      "url": "https://starry-wang.github.io/tech/develop/fix20230927_1.html",
+      "id": "https://starry-wang.github.io/tech/develop/fix20230927_1.html",
+      "summary": "Problem Description Background The goal is to configure the time zone uniformly to GMT+8. The test server is located overseas, and server-side configuration is done using Docker. Initially, the time zone was not set in the Dockerfile, and the server-side Spring Boot program did not configure the time zone.",
+      "content_html": "<h2> Problem Description</h2>\n<h3> Background</h3>\n<p>The goal is to configure the time zone uniformly to <code>GMT+8</code>.</p>\n<p>The test server is located overseas, and server-side configuration is done using Docker. Initially, the time zone was not set in the Dockerfile, and the server-side Spring Boot program did not configure the time zone.</p>\n<p>The MySQL database is configured with <code>system_time_zone</code> set to <code>CST</code>, and <code>time_zone</code> set to <code>+8:00</code>.</p>\n<h3> Description</h3>\n<p>There is a field called <code>detail_date</code> of type <code>date</code> in the database table. There is an SQL statement for time comparison for this field, for example:<br>\n<code>select * from table where detail_date &gt;= #{bgn_date} and detail_date &lt;= #{end_date}</code>.</p>\n<p>During testing, it was observed that data where <code>detail_date = bgn_date</code> was not being retrieved, and this was identified as a time zone error.</p>\n<h2> Solution</h2>\n<div class=\"language-bash line-numbers-mode\" data-ext=\"sh\"><div class=\"line-numbers\" aria-hidden=\"true\"><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div><div class=\"line-number\"></div></div></div><h2> Understanding Time Zones During Research</h2>\n<p>The following answers are from ChatGPT3.5</p>\n<h3> Comparison of CST, GMT, and UTC Time Zones</h3>\n<ol>\n<li>\n<p><strong>CST (Central Standard Time)</strong>:</p>\n<ul>\n<li>CST stands for Central Standard Time and is typically associated with the time zone of the central region of North America. This includes cities in the central United States such as Chicago, Texas, and Missouri.</li>\n<li>CST is represented as UTC-6:00, which means it is 6 hours behind Coordinated Universal Time (UTC).</li>\n<li>It's important to note that CST can also refer to China Standard Time, but internationally, CST is often more closely associated with Central Standard Time.</li>\n</ul>\n</li>\n<li>\n<p><strong>GMT (Greenwich Mean Time)</strong>:</p>\n<ul>\n<li>GMT stands for Greenwich Mean Time and is one of the earliest standard times used in the world.</li>\n<li>GMT is based on the prime meridian at Greenwich, England, and represents the time difference relative to that meridian.</li>\n<li>However, in practical use, GMT has been largely replaced by Coordinated Universal Time (UTC) because UTC is more precise and not affected by daylight saving time. Therefore, nowadays GMT and UTC are almost equivalent.</li>\n</ul>\n</li>\n<li>\n<p><strong>UTC (Coordinated Universal Time)</strong>:</p>\n<ul>\n<li>UTC stands for Coordinated Universal Time and serves as the reference time standard internationally, commonly used for global coordination of time.</li>\n<li>UTC is measured using atomic clocks to ensure high precision. It is not affected by daylight saving time or time zone changes, making it a universal time standard.</li>\n<li>The time difference between UTC and GMT is very small, but UTC is more widely used globally due to its greater accuracy.</li>\n</ul>\n</li>\n</ol>\n<p>Please note that different regions and countries may have different standard times and daylight saving time rules, so the exact representation of time zones may vary. When calculating time zone differences, it's best to use Coordinated Universal Time (UTC) as the reference baseline to avoid confusion and errors.</p>\n",
+      "date_published": "2023-09-27T00:00:00.000Z",
+      "date_modified": "2023-09-27T13:15:45.000Z",
+      "authors": [
+        {
+          "name": "ChatGPT3.5"
+        }
+      ],
+      "tags": [
+        "java",
+        "mysql"
+      ]
+    }
+  ]
+}

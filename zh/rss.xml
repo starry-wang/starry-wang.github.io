@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://starry-wang.github.io/zh/rss.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <atom:link href="https://starry-wang.github.io/zh/rss.xml" rel="self" type="application/rss+xml"/>
+    <title>技术漫游</title>
+    <link>https://starry-wang.github.io/zh/</link>
+    <description>Mr.Starry 的博客</description>
+    <language>zh-CN</language>
+    <pubDate>Wed, 27 Sep 2023 14:06:44 GMT</pubDate>
+    <lastBuildDate>Wed, 27 Sep 2023 14:06:44 GMT</lastBuildDate>
+    <generator>vuepress-plugin-feed2</generator>
+    <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <image>
+      <title>技术漫游</title>
+      <url>https://starry-wang.github.io/logo.png</url>
+      <link>https://starry-wang.github.io/zh/</link>
+    </image>
+    <category>java</category>
+    <category>mysql</category>
+    <item>
+      <title>Java与MySQL时区一致性</title>
+      <link>https://starry-wang.github.io/zh/tech/develop/fix20230927_1.html</link>
+      <guid>https://starry-wang.github.io/zh/tech/develop/fix20230927_1.html</guid>
+      <source url="https://starry-wang.github.io/zh/rss.xml">Java与MySQL时区一致性</source>
+      <description>问题描述 背景 期望将时区统一配置为GMT+8 测试服务器在海外，基于docker进行服务端配置，初始未在dockerfile中设置时区，服务端Springboot程序未对时区做配置； MySQL数据库已配置system_time_zone为CST，time_zone为+8:00。 描述 数据库表中有一字段detail_date类型为date，在程序中有针对该字段的时间比较的sql语句，例 select * from table where detail_date&amp;gt;= #{bgn_date} and detail_date&amp;lt;= #{end_date}。</description>
+      <category>java</category>
+      <category>mysql</category>
+      <pubDate>Wed, 27 Sep 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 问题描述</h2>
+<h3> 背景</h3>
+<p>期望将时区统一配置为<code>GMT+8</code></p>
+<p>测试服务器在海外，基于docker进行服务端配置，初始未在dockerfile中设置时区，服务端Springboot程序未对时区做配置；</p>
+<p>MySQL数据库已配置<code>system_time_zone</code>为<code>CST</code>，<code>time_zone</code>为<code>+8:00</code>。</p>
+<h3> 描述</h3>
+<p>数据库表中有一字段<code>detail_date</code>类型为<code>date</code>，在程序中有针对该字段的时间比较的sql语句，例<br>
+<code>select * from table where detail_date&gt;= #{bgn_date} and detail_date&lt;= #{end_date}</code>。</p>
+<p>在测试过程中发现<code>detail_date=bgn_date</code>的数据不会被检索出来，鉴定为时区错误。</p>
+<h2> 解决</h2>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 过程中查询资料对时区的了解</h2>
+<p>以下回答来自ChatGPT3.5</p>
+<h3> CST、GMT 和 UTC 时区对比</h3>
+<ol>
+<li>
+<p><strong>CST（Central Standard Time）</strong>：</p>
+<ul>
+<li>CST 代表中部标准时间，通常与北美中部地区的时区相对应。这包括美国中部地区的城市，如芝加哥、得克萨斯州和密苏里州。</li>
+<li>CST 使用 UTC-6:00 表示，即比协调世界时（UTC）早 6 小时。</li>
+<li>注意，CST 还可以指代中国标准时间，但在国际上，CST 通常与中部标准时间关联较多。</li>
+</ul>
+</li>
+<li>
+<p><strong>GMT（Greenwich Mean Time）</strong>：</p>
+<ul>
+<li>GMT 代表格林威治标准时间，是世界上最早使用的标准时间之一。</li>
+<li>GMT 基于英国格林威治的本初子午线，表示时差相对于该子午线的时间。</li>
+<li>然而，GMT 在实际使用中已经被协调世界时（UTC）所取代，因为 UTC 更加精确，不受夏令时的影响。因此，现在 GMT 和 UTC 几乎是等同的。</li>
+</ul>
+</li>
+<li>
+<p><strong>UTC（Coordinated Universal Time）</strong>：</p>
+<ul>
+<li>UTC 代表协调世界时，是国际标准时间的参考基准，通常用于全球协调时间。</li>
+<li>UTC 使用原子钟的时间测量，以确保高度精确性。它不受夏令时或时区变化的影响，因此是全球通用的时间标准。</li>
+<li>UTC 的时差相对于 GMT 微小，但由于更精确，因此在全球范围内更广泛使用。</li>
+</ul>
+</li>
+</ol>
+<p>请注意，不同地区和国家可能有不同的标准时间和夏令时规则，因此时区的确切表示方式可能会有所不同。在计算时区差异时，最好使用协调世界时（UTC）作为参考基准，以避免混淆和错误。</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
